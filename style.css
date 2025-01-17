@@ -1,0 +1,108 @@
+/* Global Styles. */
+:root {
+    --ColorTypeface: #808080;
+    --ColorCanvasGame: #e8e8e8;
+    --ColorDivGameFill1: #f0f0f0;
+    --ColorDivGameFill2: #e0e0e0;
+    --ColorDivGameStroke: #e8e8e8;
+    --ColorDivGameButtonFill: #c0c0c0;
+    --ColorDivGameButtonFillHover: #e0e0e0;
+    --ColorDivGameButtonFillActive: #a0a0a0;
+    --ColorDivGameButtonStroke: #b0b0b0;
+    --ColorDivGameButtonTypeface: #808080;
+    --ColorDivGameButtonTypefaceActive: #f0f0f0;
+}
+
+* {
+    color: var(--ColorTypeface);
+    font-family: monospace;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #00000000;
+}
+
+/* Styles for Game Canvas. */
+
+#CanvasGame {
+    background-color: var(--ColorCanvasGame);
+    display: block;
+    border-radius: 5px;
+}
+
+/* Styles for Game Division. */
+
+#DivGame {
+    width: 190px;
+    height: 190px;
+    display: grid;
+    background: linear-gradient(to bottom, var(--ColorDivGameFill1), var(--ColorDivGameFill2));
+    border: 5px;
+    border-style: solid;
+    border-color: var(--ColorDivGameStroke);
+    border-radius: 5px 5px 50px 10px;
+}
+
+/* Styles for Game Division's buttons to change the game's state. */
+
+#DivGameStateButtons {
+    margin: 10px;
+    text-align: center;
+}
+
+.DivGameStateButton {
+    width: 50px;
+    height: 30px;
+    background-color: var(--ColorDivGameButtonFill);
+    color: var(--ColorDivGameButtonTypeface);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: var(--ColorDivGameButtonStroke);
+    transition: background-color 0.15s;
+}
+
+.DivGameStateButton:hover {
+    background-color: var(--ColorDivGameButtonFillHover);
+}
+
+.DivGameStateButton:active {
+    background-color: var(--ColorDivGameButtonFillActive);
+    color: var(--ColorDivGameButtonTypefaceActive);
+}
+
+/* Styles for Game Division's buttons to control the game. */
+
+#DivGameControlButtons {
+    margin: 10px;
+    text-align: center;
+}
+
+.DivGameControlButton {
+    width: 40px;
+    height: 40px;
+    background-color: var(--ColorDivGameButtonFill);
+    color: var(--ColorDivGameButtonTypeface);
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: var(--ColorDivGameButtonStroke);
+    transition: background-color 0.15s;
+}
+
+.DivGameControlButton:hover {
+    background-color: var(--ColorDivGameButtonFillHover);
+}
+
+.DivGameControlButton:active {
+    background-color: var(--ColorDivGameButtonFillActive);
+    color: var(--ColorDivGameButtonTypefaceActive);
+}

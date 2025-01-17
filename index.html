@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Khaleel M">
+    <title>Snake Classic</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+</head>
+
+<body>
+    <main>
+        <!-- Canvas for rendering the game. -->
+        <canvas id="CanvasGame" width="200" height="200"></canvas>
+        <!-- Division for the game's controls. -->
+        <div id="DivGame">
+            <div id="DivGameStateButtons">
+                <button class="DivGameStateButton" id="DivGameStateButtonPlay">Play</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="DivGameStateButton" id="DivGameStateButtonPause">Pause</button>
+            </div>
+            <div id="DivGameControlButtons">
+                <button class="DivGameControlButton" id="DivGameControlButtonUp">&#9206;</button>
+                <br />
+                <button class="DivGameControlButton" id="DivGameControlButtonLeft">&#9204;</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="DivGameControlButton" id="DivGameControlButtonRight">&#9205;</button>
+                <br />
+                <button class="DivGameControlButton" id="DivGameControlButtonDown">&#9207;</button>
+            </div>
+        </div>
+        <!-- Script for the game. -->
+        <script src="./script.js"></script>
+    </main>
+</body>
+
+</html>
