@@ -66,24 +66,10 @@ function checkPlayerCollision(PlayerHead, PlayerArray) {
 
 // Code for Input System.
 
-/* Function to enable and disable input based on game's state. */
-function inputManager(value) {
-    if (value == true) {
-        document.addEventListener("keydown", interpretInputGameControl);
-        if (GameInputMouse == true) {
-            DivGameControlButtonLeft.addEventListener("click", () => {setPlayerDirection("PlayerDirectionLeft")});
-            DivGameControlButtonUp.addEventListener("click", () => {setPlayerDirection("PlayerDirectionUp")});
-            DivGameControlButtonRight.addEventListener("click", () => {setPlayerDirection("PlayerDirectionRight")});
-            DivGameControlButtonDown.addEventListener("click", () => {setPlayerDirection("PlayerDirectionDown")});
-        }
-    } else {
-        document.removeEventListener("keydown", interpretInputGameControl);
-        if (GameInputMouse == true) {
-            DivGameControlButtonLeft.removeEventListener("click", () => {});
-            DivGameControlButtonUp.removeEventListener("click", () => {});
-            DivGameControlButtonRight.removeEventListener("click", () => {});
-            DivGameControlButtonDown.removeEventListener("click", () => {});
-        }
+/* Function to prevent arrow keys from scrolling on the page - Caret Browsing. */
+function preventInputPageScrolling(event) {
+    if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) { 
+        event.preventDefault();
     }
 }
 
@@ -115,6 +101,29 @@ function interpretInputGameState(value) {
             changeGameState("GamePause");
         } else if (GameState == "GamePause") {
             changeGameState("GameResume");
+        }
+    }
+}
+
+/* Function to enable and disable input based on game's state. */
+function inputManager(value) {
+    if (value == true) {
+        window.addEventListener("keydown", preventInputPageScrolling);
+        document.addEventListener("keydown", interpretInputGameControl);
+        if (GameInputMouse == true) {
+            DivGameControlButtonLeft.addEventListener("mousedown", () => {setPlayerDirection("PlayerDirectionLeft")});
+            DivGameControlButtonUp.addEventListener("mousedown", () => {setPlayerDirection("PlayerDirectionUp")});
+            DivGameControlButtonRight.addEventListener("mousedown", () => {setPlayerDirection("PlayerDirectionRight")});
+            DivGameControlButtonDown.addEventListener("mousedown", () => {setPlayerDirection("PlayerDirectionDown")});
+        }
+    } else {
+        window.removeEventListener("keydown", preventInputPageScrolling);
+        document.removeEventListener("keydown", interpretInputGameControl);
+        if (GameInputMouse == true) {
+            DivGameControlButtonLeft.removeEventListener("mousedown", () => {});
+            DivGameControlButtonUp.removeEventListener("mousedown", () => {});
+            DivGameControlButtonRight.removeEventListener("mousedown", () => {});
+            DivGameControlButtonDown.removeEventListener("mousedown", () => {});
         }
     }
 }
@@ -253,10 +262,12 @@ function changeGameState(value) {
         }
         case "GamePause": {
             clearInterval(GameUpdate);
+            inputManager(false);
             refreshUI();
             break;
         }
         case "GameResume": {
+            inputManager(true);
             GameUpdate = setInterval(updateGame, GameSpeed);
             break;
         }
